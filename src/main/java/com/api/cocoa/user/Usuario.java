@@ -1,7 +1,11 @@
-package com.api.cocoa.model;
+package com.api.cocoa.user;
 
-import com.api.cocoa.DTO.UsuarioDTO;
+
+import com.api.cocoa.record.RequestUser;
 import jakarta.persistence.*;
+
+import java.util.List;
+
 
 @Entity
 @Table(name = "Users")
@@ -16,6 +20,23 @@ public class Usuario {
     private String email;
     @Column(name = "password")
     private String password;
+
+
+
+    public Usuario(RequestUser user){
+        this.name = user.name();
+        this.email = user.email();
+        this.password = user.password();
+
+
+    }
+
+    public Usuario() {
+
+    }
+
+
+
 
 
 

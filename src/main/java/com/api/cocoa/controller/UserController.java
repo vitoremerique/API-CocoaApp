@@ -1,10 +1,14 @@
 package com.api.cocoa.controller;
 
-import com.api.cocoa.model.Usuario;
+import com.api.cocoa.record.LoginRequest;
+import com.api.cocoa.user.Usuario;
 import com.api.cocoa.DTO.UsuarioDTO;
+import com.api.cocoa.record.RequestUser;
 import com.api.cocoa.service.impl.UserServiceInterface;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -17,20 +21,26 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
+
     @Autowired
     private UserServiceInterface userService;
+
+
+
+
+
 
 
     @GetMapping
     @Operation(summary = "Retorna todos os usuários do banco")
     public ResponseEntity<List<Usuario>> getAll(){
-        var usuarios = userService.getAll();
+        List<Usuario> usuarios = userService.getAll();
         return ResponseEntity.ok(usuarios);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Retorna o usuário especificado através do id")
-    public ResponseEntity<UsuarioDTO> findById( @PathVariable Long id){
+    public ResponseEntity<Usuario> findById( @PathVariable Long id){
         var usuario = userService.findById(id);
 
         return ResponseEntity.ok(usuario);
@@ -39,8 +49,10 @@ public class UserController {
 
     @PostMapping
     @Operation(summary = "Cria usuário no banco de dados com sua determinadas informações")
-    public ResponseEntity<UsuarioDTO> save(@RequestBody UsuarioDTO usuarioDTO){
-        var user = userService.register(usuarioDTO);
+    public ResponseEntity<Usuario> save(@RequestBody RequestUser usuario){
+
+
+        var user = userService.register(usuario);
         URI location  = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(user.getId())
@@ -62,16 +74,17 @@ public class UserController {
     }
 
 
-    @PutMapping("/{id}")
+    @PutMapping
     @Operation(summary = "Altera dados de ususário através do id")
-    public ResponseEntity<Usuario> update(@PathVariable Long id , @RequestBody Usuario userUpdate){
+    public ResponseEntity<Usuario> update(@RequestBody RequestUser userUpdate){
 
-        var user  = userService.atualizar(id, userUpdate);
+        var update = userService.atualizar(userUpdate);
 
-
-
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(update);
 
     }
+
+
+
 
 }

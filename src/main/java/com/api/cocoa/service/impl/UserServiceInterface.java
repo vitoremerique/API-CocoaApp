@@ -1,7 +1,8 @@
 package com.api.cocoa.service.impl;
 
-import com.api.cocoa.model.Usuario;
+import com.api.cocoa.user.Usuario;
 import com.api.cocoa.DTO.UsuarioDTO;
+import com.api.cocoa.record.RequestUser;
 
 import java.util.List;
 
@@ -9,20 +10,25 @@ public interface UserServiceInterface {
 
 
 
-     UsuarioDTO register(UsuarioDTO usuarioDTO);
+     Usuario register(RequestUser user);
 
 
      void deleteByid(Long id);
 
-     List<Usuario> getAll();
+    List<Usuario> getAll();
 
-     UsuarioDTO findById(Long id);
+     Usuario findById(Long id);
 
      boolean usuarioExistente (Long id);
 
-     Usuario atualizar(Long id, Usuario user);
+     Usuario atualizar(RequestUser user);
 
      Usuario findByIduser(Long id);
+
+
+
+    Usuario findByName(String nome);
+
 
 
 
