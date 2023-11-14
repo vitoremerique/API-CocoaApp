@@ -12,7 +12,8 @@ API was developed to be the middleware of my frontend to database and Processing
 - PostgreSQL Driver :white_check_mark:
 - OpenAPI(Swagger) :white_check_mark:
 ## Cloning the repository
- * git clone ```https://github.com/vitoremerique/API-CocoaApp.git```
+- Open your terminal and execute the command
+   ```git clone https://github.com/vitoremerique/API-CocoaApp.git```
 
 ## Executing the project
 * To execute the project, is recommended to use Intellj IDE to set environment variables that conect with ```Railway```, The cloud for teams that automates your deployments— build, ship, and monitor without the infrastructure bottleneck.
