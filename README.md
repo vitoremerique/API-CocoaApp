@@ -8,7 +8,6 @@ API was developed to be the middleware of my frontend to database and Processing
 ## Dependencies
 - Spring data JPA :white_check_mark:
 - Spring Web :white_check_mark:
-- Spring Security :white_check_mark:
 - PostgreSQL Driver :white_check_mark:
 - OpenAPI(Swagger) :white_check_mark:
 ## Cloning the repository
