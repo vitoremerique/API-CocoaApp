@@ -1,7 +1,7 @@
 package com.api.cocoa.service.impl;
 
+import com.api.cocoa.record.AlterPassword;
 import com.api.cocoa.user.Usuario;
-import com.api.cocoa.DTO.UsuarioDTO;
 import com.api.cocoa.record.RequestUser;
 import com.api.cocoa.repository.UserRepository;
 
@@ -33,10 +33,12 @@ public class UserService implements UserServiceInterface{
 
 
 
-    public void deleteByid(Long id){
-       userRepository.deleteById(id);
+    @Override
+    public void deleteByid(Long id) {
+    userRepository.deleteById(id);
 
     }
+
 
     @Override
     public List<Usuario> getAll() {
@@ -48,19 +50,7 @@ public class UserService implements UserServiceInterface{
         return getall;
     }
 
-    public Usuario findByIduser(Long id) {
 
-        var usuarioFound =  userRepository.findById(id);
-        Usuario usuario = new Usuario();
-        usuario.setId(usuarioFound.get().getId());
-        usuario.setName(usuarioFound.get().getName());
-        usuario.setEmail(usuarioFound.get().getEmail());
-        usuario.setPassword(usuarioFound.get().getPassword());
-
-        return usuario;
-
-
-    }
 
 
     public Usuario findByName(String nome) {
@@ -83,23 +73,16 @@ public class UserService implements UserServiceInterface{
         return user;
     }
 
-    @Override
-    public boolean usuarioExistente(Long id) {
-         if(userRepository.findById(id).isPresent()){
-             return true;
-         }else{
-             return false;
-         }
-
-    }
 
 
-    public Usuario atualizar(RequestUser user) {
-        Usuario usuario = userRepository.getReferenceById(user.id());
-        usuario.setName(user.name());
-        usuario.setEmail(user.email());
-        usuario.setPassword(user.password());
 
+    public Usuario atualizar(AlterPassword user) {
+        Usuario usuario = userRepository.findByName(user.nome());
+        if(usuario.getPassword().equals(user.senhaAntiga())){
+            usuario.setEmail(usuario.getEmail());
+            usuario.setName(usuario.getName());
+            usuario.setPassword(user.novaSenha());
+        }
 
         return userRepository.save(usuario);
     }

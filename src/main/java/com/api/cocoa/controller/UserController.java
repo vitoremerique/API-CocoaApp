@@ -1,14 +1,15 @@
 package com.api.cocoa.controller;
 
+
+import com.api.cocoa.record.AlterPassword;
 import com.api.cocoa.record.LoginRequest;
+import com.api.cocoa.record.RequestUserDelete;
 import com.api.cocoa.user.Usuario;
-import com.api.cocoa.DTO.UsuarioDTO;
+
 import com.api.cocoa.record.RequestUser;
 import com.api.cocoa.service.impl.UserServiceInterface;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -64,19 +65,19 @@ public class UserController {
 
     @DeleteMapping
     @Operation(summary = "Deleta usuário através do id")
-    public String DeleteUser(Long id){
+    public ResponseEntity<Usuario> DeleteUser(@RequestBody RequestUserDelete user){
+       Usuario u = userService.findByName(user.name());
+        if(u.getName().equals(user.name()) && u.getPassword().equals(user.password()) && u.getEmail().equals(user.email())){
+           userService.deleteByid(u.getId());
+       }
 
-        if(userService.usuarioExistente(id)){
-            userService.deleteByid(id);
-        }
-
-        return "Usuário deletado com sucesso!";
+    return ResponseEntity.ok().build();
     }
 
 
     @PutMapping
     @Operation(summary = "Altera dados de ususário através do id")
-    public ResponseEntity<Usuario> update(@RequestBody RequestUser userUpdate){
+    public ResponseEntity<Usuario> update(@RequestBody AlterPassword userUpdate){
 
         var update = userService.atualizar(userUpdate);
 
