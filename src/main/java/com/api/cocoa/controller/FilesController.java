@@ -3,6 +3,7 @@ package com.api.cocoa.controller;
 import com.api.cocoa.file.FileEntity;
 import com.api.cocoa.file.FileResponse;
 import com.api.cocoa.service.impl.FileService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,7 @@ public class FilesController {
     }
 
     @PostMapping
+    @Operation(summary = "Realiza o upload de uma imagem para o banco")
     public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) {
         try {
             fileService.save(file);
@@ -41,6 +43,7 @@ public class FilesController {
     }
 
     @GetMapping
+    @Operation(summary = "Lista todas imagens do banco")
     public List<FileResponse> list() {
         return fileService.getAllFiles()
                 .stream()
@@ -64,6 +67,7 @@ public class FilesController {
     }
 
     @GetMapping("{id}")
+    @Operation(summary = "Retorna uma imagem pelo id")
     public ResponseEntity<byte[]> getFile(@PathVariable String id) {
         Optional<FileEntity> fileEntityOptional = fileService.getFile(id);
 
