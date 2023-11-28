@@ -1,7 +1,9 @@
 package com.api.cocoa.file;
 
+import com.api.cocoa.user.Usuario;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+
 
 @Entity
 @Table(name = "FILES")
@@ -20,6 +22,7 @@ public class FileEntity {
         private String contentType;
 
         private Long size;
+
 
         @Lob
         private byte[] data;

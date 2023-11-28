@@ -14,11 +14,14 @@ API was developed to be the middleware of my frontend to database and Processing
 - Open your terminal and execute the command
    ```git clone https://github.com/vitoremerique/API-CocoaApp.git```
 
-## Executing the project
+## Running the project
 * To execute the project, is recommended to use Intellj IDE to set environment variables that conect with ```Railway```, The cloud for teams that automates your deployments— build, ship, and monitor without the infrastructure bottleneck.
 * create a database PostgreSQL in ```Railway``` and set environment variables.
 * If you are using diferent IDE, you can change directly ```application.propertires```.
+## The Frontend project:
+Link: ```https://github.com/vitoremerique/Cocoa-app```
 ## Endpoints :round_pushpin:
-![image](https://github.com/vitoremerique/API-CocoaApp/assets/62085257/3c1b9d2b-9521-4fdd-8cc5-2936b20daa22)
+![Captura de tela de 2023-11-27 23-04-11.png](..%2F..%2FImagens%2FCapturas%20de%20tela%2FCaptura%20de%20tela%20de%202023-11-27%2023-04-11.png)
+
 
  
