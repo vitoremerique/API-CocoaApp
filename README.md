@@ -21,7 +21,7 @@ API was developed to be the middleware of my frontend to database and Processing
 ## The Frontend project:
 Link: ```https://github.com/vitoremerique/Cocoa-app```
 ## Endpoints :round_pushpin:
-![Captura de tela de 2023-11-27 23-04-11.png](..%2F..%2FImagens%2FCapturas%20de%20tela%2FCaptura%20de%20tela%20de%202023-11-27%2023-04-11.png)
+![Captura de tela de 2023-11-27 23-04-11.png](src%2Fmain%2Fjava%2Fcom%2Fapi%2Fcocoa%2Fimgs%2FCaptura%20de%20tela%20de%202023-11-27%2023-04-11.png)
 
 
  
